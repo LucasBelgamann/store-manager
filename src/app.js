@@ -1,4 +1,5 @@
 const express = require('express');
+const productsRouter = require('./routers/products.router');
 
 const app = express();
 
@@ -6,6 +7,7 @@ const app = express();
 app.get('/', (_request, response) => {
   response.send();
 });
+app.use('/products', productsRouter);
 
 // ladys and gentlemans, let's go start this project
 // não remova essa exportação, é para o avaliador funcionar
