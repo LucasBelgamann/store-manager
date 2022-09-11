@@ -32,5 +32,22 @@ describe('Testing service functions', function () {
       const response = await productsServices.getWaitingProductsId(1);
 
       expect(response).to.deep.equal(expected);
-    });
+  });
+  it('Testing createProduct', async function () {
+    sinon.stub(productsModel, "insertProducts").resolves([
+        {
+          id: 1,
+          name: 'lança teia',
+        },
+      ]);
+
+    const response = await productsServices.createProduct();
+
+    expect(response).to.deep.equal([
+        {
+          id: 1,
+          name: 'lança teia',
+        },
+      ]);
+  })
 })
