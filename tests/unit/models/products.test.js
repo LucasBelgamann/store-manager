@@ -1,12 +1,12 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
+const { expect } = require("chai");
+const sinon = require("sinon");
 
-const productsModel = require('../../../src/models/products.model');
-const connection = require('../../../src/models/connection')
+const productsModel = require("../../../src/models/products.model");
+const connection = require("../../../src/models/connection");
 
-describe('Teste da pasta models', () => {
-    beforeEach(sinon.restore);
-  it('Testando a função getProducts', async () => {
+describe("Teste da pasta models", () => {
+  beforeEach(sinon.restore);
+  it("Testando a função getProducts", async () => {
     // const execute = [{
     //       id: 1,
     //       name: 'Martelo de Thor',
@@ -22,24 +22,25 @@ describe('Teste da pasta models', () => {
     //   ];
     // sinon.stub(connection, 'execute').resolves([execute]);
     const response = await productsModel.getProducts();
-    expect(response).to.be.an('array');
+    expect(response).to.be.an("array");
   });
 
-  describe('testando a função getById', function () {
+  describe("testando a função getById", function () {
     before(function () {
-      const execute = [{
+      const execute = [
+        {
           id: 1,
-          name: 'Martelo de Thor',
+          name: "Martelo de Thor",
         },
       ];
 
-      sinon.stub(productsModel, 'getById').resolves(execute);
-    })
-    it('com sucesso', async function () {
+      sinon.stub(productsModel, "getById").resolves(execute);
+    });
+    it("com sucesso", async function () {
       const expected = [
         {
           id: 1,
-          name: 'Martelo de Thor',
+          name: "Martelo de Thor",
         },
       ];
 
@@ -48,4 +49,15 @@ describe('Teste da pasta models', () => {
       expect(response).to.deep.equal(expected);
     });
   });
-})
+  it("Realizando uma operação INSERT", async function () {
+    sinon.stub(connection, "execute").resolves([{ insertId: 1 }]);
+    
+
+    const nameProduct = 'Lança teia'
+
+
+    const result = await productsModel.insertProducts(nameProduct);
+
+    expect(result).to.deep.equal(1);
+  });
+});
