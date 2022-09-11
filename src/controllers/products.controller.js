@@ -16,7 +16,15 @@ const getForIdControll = async (req, res) => {
   res.status(200).json(resultado[0]);
 };
 
+const createNewProduct = async (req, res) => {
+  const { name } = req.body;
+  const resultado = await productsService.createProduct(name);
+
+  res.status(201).json(resultado);
+};
+
 module.exports = {
   getProductsControll,
   getForIdControll,
+  createNewProduct,
 };

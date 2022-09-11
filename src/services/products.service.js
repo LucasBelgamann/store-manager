@@ -10,7 +10,13 @@ const getWaitingProductsId = async (id) => {
   return result; 
 };
 
+const createProduct = async (name) => {
+     const newProduct = await productsModel.insertProducts(name);
+     return newProduct;
+};
+
 module.exports = {
   getWaitingProducts,
   getWaitingProductsId,
+  createProduct,
 };
