@@ -1,5 +1,6 @@
 const express = require('express');
 const productsRouter = require('./routers/products.router');
+const validationName = require('./middlewares/middlewareName');
 
 const app = express();
 app.use(express.json());
@@ -8,7 +9,7 @@ app.use(express.json());
 app.get('/', (_request, response) => {
   response.send();
 });
-app.use('/products', productsRouter);
+app.use('/products', validationName, productsRouter);
 
 // ladys and gentlemans, let's go start this project
 // não remova essa exportação, é para o avaliador funcionar
