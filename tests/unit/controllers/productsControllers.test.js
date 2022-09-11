@@ -23,7 +23,7 @@ describe("Testing controller functions", function () {
 
     expect(res.json.calledWith(allResponse)).to.be.true;
   });
-  it("successfully", async function () {
+  it("successfully getForIdControll", async function () {
     const res = {};
     const req = {};
 
@@ -49,5 +49,21 @@ describe("Testing controller functions", function () {
 
     expect(res.status.calledWith(200)).to.be.true;
     expect(res.json.calledWith(expected[0])).to.be.true;
+  });
+    it("testing createNewProduct function ", async function () {
+    const res = {};
+    const req = { body: { name: 'Lança teia' } };
+
+    sinon.stub(productsServices, "createProduct").resolves({ id: 1, name: 'Lança teia' });
+      
+      const expected = { id: 1, name: 'Lança teia' };
+
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+
+    await productsControll.createNewProduct(req, res);
+
+    expect(res.status.calledWith(201)).to.be.true;
+    expect(res.json.calledWith(expected)).to.be.true;
   });
 });

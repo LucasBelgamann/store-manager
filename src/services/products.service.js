@@ -11,8 +11,8 @@ const getWaitingProductsId = async (id) => {
 };
 
 const createProduct = async (name) => {
-     const newProduct = await productsModel.insertProducts(name);
-     return newProduct;
+  const idProduct = await productsModel.insertProducts(name);
+  return idProduct;
 };
 
 module.exports = {
