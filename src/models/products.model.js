@@ -20,7 +20,8 @@ const insertProducts = async (name) => {
     'INSERT INTO products (name) VALUE (?)',
     [name],
   );
-  return insertId;
+  const product = { id: insertId, name };
+  return product;
 };
 
 module.exports = {
