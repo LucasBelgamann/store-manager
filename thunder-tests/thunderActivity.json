@@ -32,16 +32,16 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3000/products",
-    "url": "http://localhost:3000/products",
-    "method": "POST",
+    "url": "http://localhost:3000/sales/1",
+    "method": "GET",
     "sortNum": 0,
     "created": "2022-09-11T18:47:04.451Z",
-    "modified": "2022-09-11T19:10:54.873Z",
+    "modified": "2022-09-13T20:35:20.561Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"arco\"\n}\n",
+      "raw": "\n",
       "form": []
     },
     "tests": []

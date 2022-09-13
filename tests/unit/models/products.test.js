@@ -34,7 +34,7 @@ describe("Teste da pasta models", () => {
         },
       ];
 
-      sinon.stub(productsModel, "getById").resolves(execute);
+      sinon.stub(connection, "execute").resolves(execute);
     });
     it("com sucesso", async function () {
       const expected = [
