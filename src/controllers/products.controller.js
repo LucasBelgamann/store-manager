@@ -27,11 +27,29 @@ const updateIdProductControll = async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
 
-  const [idProductChange] = await productsService.updateProdutcIdServices(name, id);
+  const [idProductChange] = await productsService.updateProdutcIdServices(
+    name,
+    id,
+  );
 
-  if (!idProductChange) { return res.status(404).json({ message: 'Product not found' }); }
+  if (!idProductChange) {
+    return res.status(404).json({ message: 'Product not found' });
+  }
 
   return res.status(200).json(idProductChange);
+};
+
+const deleteProduct = async (req, res) => {
+  const { id } = req.params;
+
+  const productDelete = await productsService.getWaitingProductsId(id);
+
+  if (!productDelete[0]) {
+    return res.status(404).json({ message: 'Product not found' });
+  } 
+    await productsService.deleteProdutcIdServices(id);
+
+  return res.send(204);
 };
 
 module.exports = {
@@ -39,4 +57,5 @@ module.exports = {
   getForIdControll,
   createNewProduct,
   updateIdProductControll,
+  deleteProduct,
 };
