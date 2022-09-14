@@ -29,7 +29,6 @@ const updateProductIdModel = async (name, id) => {
     'UPDATE StoreManager.products SET name = (?) WHERE id = (?)',
     [name, id],
   );
-
   const updateItem = await getById(id);
 
   return updateItem;
