@@ -35,19 +35,33 @@ describe('Testing service functions', function () {
   });
   it('Testing createProduct', async function () {
     sinon.stub(productsModel, "insertProducts").resolves([
-        {
-          id: 1,
-          name: 'lança teia',
-        },
-      ]);
+      {
+        id: 1,
+        name: 'lança teia',
+      },
+    ]);
 
     const response = await productsServices.createProduct();
 
     expect(response).to.deep.equal([
-        {
-          id: 1,
-          name: 'lança teia',
-        },
-      ]);
-  })
+      {
+        id: 1,
+        name: 'lança teia',
+      },
+    ]);
+  });
+  it('Testando a função updateProdutcIdServices', async function () {
+    sinon.stub(productsModel, "updateProductIdModel").resolves(2, "João");
+
+    const response = await productsServices.updateProdutcIdServices(2, "João");
+
+    expect(response).to.deep.equal(2, "João");
+  });
+  it("Testando a função deleteProdutcIdServices", async function () {
+    sinon.stub(productsModel, "deleteProductId").resolves();
+
+    const result = await productsServices.deleteProdutcIdServices(1);
+
+    expect(result).to.deep.equal();
+  });
 })
